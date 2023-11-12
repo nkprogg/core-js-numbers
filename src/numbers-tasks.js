@@ -105,8 +105,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,-1) (1,0)    => π/2
  *   (0,1) (0,1)     => 0
  */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const num = x1 * x2 + y1 * y2;
+  const v1 = Math.sqrt(x1 ** 2 + y1 ** 2);
+  const v2 = Math.sqrt(x2 ** 2 + y2 ** 2);
+  return Math.acos(num / (v1 * v2));
 }
 
 /**
@@ -237,8 +240,8 @@ function toNumber(value, def) {
  *   -2 => -8
  *   0  => 0
  */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+function getCube(num) {
+  return num ** 3;
 }
 
 /**
@@ -254,8 +257,9 @@ function getCube(/* num */) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  const fib = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+  return fib[index];
 }
 
 /**
@@ -269,8 +273,12 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let result = 0;
+  for (let i = 1; i <= n; i += 1) {
+    result += i;
+  }
+  return result;
 }
 
 /**
@@ -284,8 +292,16 @@ function getSumToN(/* n */) {
  *   202 => 4  // (2+0+2)
  *   5   => 5  // 5
  */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  let number = num;
+  let result = 0;
+
+  while (number) {
+    result += number % 10;
+    number = Math.floor(number / 10);
+  }
+
+  return result;
 }
 
 /**
