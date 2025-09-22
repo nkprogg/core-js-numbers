@@ -34,7 +34,7 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCircleCircumference(radius) {
-  return 2 * 3.141592653589793 * radius;
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -84,7 +84,7 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 function getLinearEquationRoot(a, b) {
-  return Math.ceil(-b / a);
+  return -b / a;
 }
 
 /**
@@ -125,7 +125,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  return Math.abs(value) % 10;
+  return value % 10;
 }
 
 /**
@@ -200,6 +200,8 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
+  if (n <= 1) return false;
+
   for (let i = 2; i < n; i += 1) {
     if (n % i === 0) return false;
   }
@@ -292,12 +294,11 @@ function getSumToN(n) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  let number = num;
+  const arr = num.toString().split('').map(Number);
   let result = 0;
 
-  while (number) {
-    result += number % 10;
-    number = Math.floor(number / 10);
+  for (let i = 0; i <= arr.length - 1; i += 1) {
+    result += arr[i];
   }
 
   return result;
@@ -591,7 +592,10 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return Math.random() * (max - min) + min;
+  const length = max - min + 1;
+  const random = Math.random() * length;
+  const result = Math.floor(random) + min;
+  return result;
 }
 
 /**
